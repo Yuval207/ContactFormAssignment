@@ -44,6 +44,11 @@ This project is a simple contact page built with Next.js, React, and Axios. It a
     npm run dev
     ```
 5. Open http://localhost:3000 to view the application in your browser.
+6. To see the data entered by the user, <br>
+Link for the sheet is:<br>
+    ```bash
+    https://docs.google.com/spreadsheets/d/18Esdo5myeZOaHl2vonxkrsyz_-AO3GxPye4rWQ5TpMo/edit#gid=0
+    ```
 
 ## Usage
 1. Fill out the form fields with your name, email, phone number, and message.
