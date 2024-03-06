@@ -6,14 +6,22 @@ import Lottie from "lottie-react";
 import { ToastContainer, toast, Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+// Define the Home component
+
 export default function Home() {
+  // Define refs for form elements
+
   const formRef = useRef(null);
   const nameRef = useRef(null);
   const emailRef = useRef(null);
   const numberRef = useRef(null);
   const messagesRef = useRef(null);
+
+  // Function to handle form submission
+
   function submitForm(e) {
     e.preventDefault();
+    // Show success message
     toast.success("Message received Successfully!", {
       position: "bottom-center",
       autoClose: 5000,
@@ -25,20 +33,28 @@ export default function Home() {
       theme: "dark",
       transition: Bounce,
     });
+
+    // Get form data
+
     const formEle = formRef.current;
     const formData = new FormData(formEle);
+    // Send form data to Google Sheets
     axios
       .post(
         "https://script.google.com/macros/s/AKfycbx4NDJukSvcU8LVy9QmBjAlFIMdh7WIoSt1qR-Hf7tBRspdJ7-bUu6083A_aV3WCOu1/exec",
         formData
       )
       .then((response) => {
+        // Clear form fields
+
         nameRef.current.value = "";
         emailRef.current.value = "";
         numberRef.current.value = "";
         messagesRef.current.value = "";
       })
       .catch((error) => {
+        // Show error message
+
         toast.error("Error Occured", {
           position: "bottom-center",
           autoClose: 5000,
