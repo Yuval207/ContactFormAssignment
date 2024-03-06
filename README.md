@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Contact Page with Next.js
 
-## Getting Started
+This project is a simple contact page built with Next.js, React, and Axios. It allows users to submit their contact information and messages.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Form validation using React's useRef hook
+- Form submission using Axios to a Google Apps Script endpoint
+    ### Google Sheets Integration
+    This Next.js application integrates with Google Sheets using Google Apps Script to store form submission data. The Google Apps Script receives form data from the Next.js application and appends it to a specified Google Sheets document.
+    
+    #### Setup
+    - Create a new Google Sheets document to store form data.
+    - Open the Google Apps Script editor by going to Extensions -> Apps Script.
+    - Copy and paste the provided Google Apps Script code into the editor.
+    - Deploy the script as a web app by clicking on the Deploy button and selecting New deployment.
+    - Set the deployment type to Web app and configure the access permissions as needed.
+    - Copy the deployed web app URL.
+    #### Usage
+    In your Next.js application, update the axios.post URL to point to the deployed Google Apps Script web app URL.
+    When the form is submitted in your Next.js application, the form data will be sent to the Google Apps Script, which will append it to the specified Google Sheets document.
+    #### Example
+    For example, to integrate with a Google Sheets document with the URL https://docs.google.com/spreadsheets/d/18Esdvonxkrsyz_-AO3GxPye4rWQ5TpMo/edit#gid=0, you would      set the axios.post URL as follows:
+    ```bash
+    axios.post('https://script.google.com/macros/s/AKfycbx4NDJukssSvcU8LVy9QmBjAlFIMdh7WIoSt1qR-Hf7tBRspdJ7-bUu6083A_aV3WCOu1/exec', formData)
+    ```
+- Toast notifications for success and error messages using react-toastify
+- Lottie animation for visual appeal
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Installation and Setup
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+1. Fork this repository
+2. Clone the repository:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+   ```bash
+   git clone https://github.com/your-username/ContactFormAssignment.git
+   ```
+3. Install dependencies
+    ```bash
+    npm install
+    ```
+4. Run the development server
+    ``` bash
+    npm run dev
+    ```
+5. Open http://localhost:3000 to view the application in your browser.
 
-## Learn More
+## Usage
+1. Fill out the form fields with your name, email, phone number, and message.
+2. Click the "Submit" button to submit the form.
+3. Success and error messages will be displayed using toast notifications.
 
-To learn more about Next.js, take a look at the following resources:
+## Deployment
+This project is deployed to Vercel or any other hosting provider that supports Next.js applications. For deployment to Vercel, simply push your changes to the main branch, and Vercel will automatically deploy the application.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Credits
+- Next.js - The React framework for production
+- React - A JavaScript library for building user interfaces
+- Axios - Promise based HTTP client for the browser and Node.js
+- Lottie - Render After Effects animations natively on Web, Android and iOS, and React Native
+- react-toastify - React component for toast notifications
